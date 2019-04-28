@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 import 'action.dart';
 import 'state.dart';
 
+import 'package:woodpecker/general/localizations/default_localization.dart';
+
 Widget buildView(CounterState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
-      title: Text('Flutter Redux Home'),
+      title: Text(DefaultLocalizations.of(viewService.context).localeString.homePageTitle),
     ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'You have pushed the button this many times:',
+            DefaultLocalizations.of(viewService.context).localeString.homeCounterPrompt,
           ),
           Text(
             '${state.counter}',

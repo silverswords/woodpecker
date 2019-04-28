@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fish_redux/fish_redux.dart';
 
+import 'package:woodpecker/general/localizations/localizations_delegate.dart';
 import 'page/home/page.dart';
 
 Widget createApplication() {
@@ -13,11 +15,19 @@ Widget createApplication() {
   ]);
 
   return MaterialApp(
-    title: 'Flutter Redux Demo',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
+    localizationsDelegates: [
+      const DefaultLocalizationsDelegate(),
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+    ],
+    supportedLocales: [
+      const Locale('en'), // English
+      const Locale('zh'), // Chinese
+    ],
     home: routes.buildPage('home', null),
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute<Object>(builder: (BuildContext context) {
